@@ -8,7 +8,7 @@ import itertools as it
 
 def basic_polynominals():
     for n in range(0, 10):
-        plot_f(lambda x: x**n - 1, 0.05, 2, True)
+        plot_f(lambda x: x**n - 1, zoom=0.05, bound=2, move_c=True)
         sleep(3)
 
 def _cyclotomic(n):
@@ -39,4 +39,4 @@ def cyclotomic_simul():
             plot_f(lambdify(x, s, 'numpy'), lambdify(x, d, 'numpy'), zoom=0.05, bound=2, center=(0, 0), move_c=True, n=i)
             sleep(4)
 
-cyclotomic_simul()
+basic_polynominals()

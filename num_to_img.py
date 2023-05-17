@@ -1,4 +1,5 @@
 import itertools as it
+import operator as op
 
 def wrap(_l, x, y):
     ans = []
@@ -12,17 +13,20 @@ def wrap(_l, x, y):
                 ans[i].append(0)
     return ans
 
-def nl_to_bl(nl, start=0):
+def nl_to_bl(nl, start=0, step=1, iaef=None):
+    if iaef is None: iaef = it.count(start, step)
     'Number list to bit list'
     i = iter(nl)
     try:
         cur = next(i)
-        for x in it.count(start):
+        for x in iaef:
             if x == cur:
                 yield 1
                 cur = next(i)
             else:
                 yield 0
+            while x > cur:
+                cur = next(i)
     except StopIteration:
         return
 
@@ -52,4 +56,5 @@ def spiral(_l):    # When rotate is replaced with transpose, diagonal lines beco
 
 if __name__ == '__main__':
     import bit8
-    bit8.bw.render(spiral(nl_to_bl(range(1, 9999, 2))), False)
+    import math
+    bit8.render(spiral((int(math.atan(x) * 255),) * 3 for x in range(2, 1000)), False)

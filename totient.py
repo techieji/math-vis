@@ -28,6 +28,6 @@ def totient(n):
 # For odd totients, interesting corner shapes appear
 # l = (1 - totient(x) / x for x in range(1, 10000, 2))
 
-l = (math.atan(totient(x)) * 2/math.pi for x in range(2, 40000, 2))
+l = (math.atan(totient(x)) * 2/math.pi for x in range(2, 10000, 2))
 scr = spiral((int(x * 255),) * 3 for x in l)
 bit8.render(scr)
