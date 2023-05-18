@@ -39,4 +39,4 @@ def cyclotomic_simul():
             plot_f(lambdify(x, s, 'numpy'), lambdify(x, d, 'numpy'), zoom=0.05, bound=2, center=(0, 0), move_c=True, n=i)
             sleep(4)
 
-basic_polynominals()
+cyclotomic_simul()

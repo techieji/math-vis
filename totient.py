@@ -19,6 +19,7 @@ def is_prime(n):
 
 @cache
 def totient(n):
+    if n == 0: return 0
     if n == 1: return 1
     for i in range(2, n + 1):
         if n % i == 0 and is_prime(i):
@@ -28,6 +29,10 @@ def totient(n):
 # For odd totients, interesting corner shapes appear
 # l = (1 - totient(x) / x for x in range(1, 10000, 2))
 
-l = (math.atan(totient(x)) * 2/math.pi for x in range(2, 10000, 2))
-scr = spiral((int(x * 255),) * 3 for x in l)
-bit8.render(scr)
+from time import sleep
+for x in range(1, 10):
+    if is_prime(x):
+        l = (math.atan(totient(x)) * 2/math.pi for x in range(x-1, 10000 * x, x))
+        scr = spiral((int(x * 255),) * 3 for x in l)
+        bit8.render(scr, True)
+        sleep(3)
